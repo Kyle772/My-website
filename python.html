@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kyle Diggs Portfolio</title>
+    <link rel="stylesheet" href="css/portfolio.css" type="text/css">
+    <link rel="shortcut icon" href="logo/logo.ico">
+    
+    <link rel="stylesheet" href="css/python.css" type="text/css">
+
+    <link rel="stylesheet" href="js/highlight.pack.js">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+	<script src="//use.typekit.net/qau2hnf.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/portfolio.js"></script>
+</head>
+<body>
+	<div class="header">
+    	<div class="headerLogo"><img src="logo/Logo.svg"></div>
+    	<a href="index.html"><div class="button" id="Home">Blog</div></a>
+        <a href="portfolio.html"><div class="button" id="Portfolio"><div class="focus"></div>Portfolio</div></a>
+        <a href="contact.html"><div class="button" id="Contact Me">Contact Me</div></a>
+        <div class="headerContact">
+			<div class="headerPhoto"></div>
+	        <div class="headerInfo">
+	            (760) 880-0723<br>
+	            Software@KyleDiggs.com<br>
+                Anaheim, CA
+	        </div>
+        </div>
+    </div>
+    <div class="main">
+    	<div class="mainCol">
+            <h1 class="topText"><span class="green">></span>Portfolio<span class="green">.</span></h1>
+            <div class="portBoxCol">
+        	    <div class="bodyCol">
+    	        	<a href="python.html">
+                        <div class="portBox" id="PythonButton">
+                            <img class="portSVG" src="svg/python.svg">
+                        </div>
+                    </a>
+	                <a href="vb.html">
+                        <div class="portBox" id="VBButton">
+                            <img class="portSVG" src="svg/VB.svg">
+                        </div>
+                    </a>
+                	<a href="cpp.html">
+                        <div class="portBox" id="CppButton">
+                            <img class="portSVG" src="svg/cpp.svg">
+                        </div>
+                    </a>
+            	    <a href="isaac.html">
+                        <div class="portBox" id="IsaacButton">
+                            <img class="portSVG" src="svg/isaac.svg">
+                        </div>
+                    </a>
+	            </div>
+            </div>
+            <div class="previewBoxCol">
+                <div class="previewBox" id="previewBox">
+                    <div class="selectionCol">
+                        <div class="selectionBox" id="selectionBox"></div>
+                    </div>
+                    <div id="contentBox">
+                     <div class="preview">
+        <h1 class="idAnchor" id="scheduleScraper">Schedule Scraper</h1>
+        <p>A small python program that pulls the HTML code from the online class catalog for Fullerton College. Using Beautiful Soup 4 and Gspread I made an algorithm to pull data from each table element and organize it based on column number and data types. Once the Data is pulled it then sends all the data to a Google Spreadsheet for cloud access at any time. 
+<br><br>
+The purpose behind this program was to make choosing classes easier for me, it filters through classes that are Restricted or waitlisted and only showed those that were either open or closed (so I could see which classes recently closed)</p>
+        <br>
+        <div class="code"><pre><code>#--Algorithm snippet for sifting through values--#
+for tr in soup.find_all('tr'):
+    if stop == True:
+        break
+    if len(tr) < 15:
+        continue
+        
+    #--Look for all data entries and skip any that contain...----#
+    #--RESTRICTED or WAITLISTED-(Keeping Closed to stay updated)-#
+    #----OPEN:--Open for Enrollment------# 
+    #----CLOSED:--Closed for Enrollment--#
+    #----RESTRICTED:--Special Classes----#
+    #----Waitlisted:--Full/Open Waitlist-#
+    
+    for td in tr.find_all('td'):
+        if td.text == "OPEN" or td.text == "CLOSED":
+            DataCheckPoint = True
+
+        if DataCheckPoint == True:
+            #--Skipping initial intro rows--#
+            if td.text == "End of report":
+                stop = True
+                break
+            if td.text == "Status":
+                #stop = True
+                print "\n"
+                break
+            #--Skimming through valid rows--#
+            if tdcount == 1:
+                if not (td.text in ValidList):
+                    continue
+                StatusList.append(td.text.replace(" ", ""))
+            if tdcount == 2:
+                CrnList.append(td.text.replace(" ", ""))
+            if tdcount == 3:
+                CreditList.append(td.text.replace(" ", ""))
+            #--Days of the week--#
+            if tdcount == 4:
+                #--Skips online courses--#
+                if "Onlinecourse" in td.text:
+                    continue
+                if td.text == "":
+                    MondayList.append(" ")
+                else:
+                    MondayList.append(td.text.replace(" ", ""))
+            if tdcount == 5:
+                TuesdayList.append(td.text.replace(" ", ""))
+            if tdcount == 6:
+                WednesdayList.append(td.text.replace(" ", ""))
+            if tdcount == 7:
+                ThursdayList.append(td.text.replace(" ", ""))
+            if tdcount == 8:
+                FridayList.append(td.text.replace(" ", ""))
+            if tdcount == 9:
+                SaturdayList.append(td.text.replace(" ", ""))
+            if tdcount == 10:
+                SundayList.append(td.text.replace(" ", ""))
+            #--Time slots for classes--#
+            if tdcount == 11:
+                TimeList.append(td.text.replace(" ", ""))
+            #--Room Number--#
+            if tdcount == 12:
+                text = td.text.replace(" ", "")
+                text = text[text.find('FC')::]
+                RoomList.append(text)
+            #--Useless information to skip--#
+            if tdcount == 13:
+                pass
+            if tdcount == 14:
+                pass
+            if tdcount == 15:
+                pass
+            #--Prof name--#
+            if tdcount == 16:
+                ProfList.append(td.text.replace(" ", ""))
+            #--Increment--#
+            tdcount += 1
+    tdcount = 1
+        </pre></code></div>
+        <iframe src="https://docs.google.com/file/d/0B4w7kTswal6QNTh5RWdxTVc5bmM/preview" width="49%" height="400px"></iframe>
+    <a href="#top" class="top">back to top</a>
+                         
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="WIP"><img id="hardhatSVG" src="svg/WIP.svg">Work in Progress</div>
+    </div>
+</body>
+</html>

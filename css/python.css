@@ -1,0 +1,49 @@
+.underline{
+    position: relative;
+    top: 35px;
+    display: block;
+    height: 3px;
+    width: 200px;
+    background-color: #42B426;
+}
+.preview {
+    margin: 30px;
+}
+.code {
+    display: inline-block;
+    height: 400px;
+    width: 49%;
+    overflow: scroll;
+    background: url('alt.png')
+}
+/*FONTS AND HEADERS*/
+h1 {
+    font-family: "clarendon-text-pro", serif;
+    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: 400;
+}
+li {
+    font-family: "adobe-text-pro", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+.button {
+	font-family: "adelle-sans";
+}
+.headerInfo {
+	line-height: 120%;
+	font-size: 90%;
+	font-family: "adelle-sans",sans-serif;
+}
+p {
+	font-family: "adobe-text-pro", sans-serif;
+	text-indent: 50px;
+	font-size: 16px;
+	margin-left: 0px;
+	margin-bottom: 10px;
+    font-weight: 300;
+}
+.green {
+	color: #42B426;
+}

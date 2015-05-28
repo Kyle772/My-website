@@ -5,8 +5,18 @@
 	<title>Kyle Diggs Portfolio</title>
     <link rel="stylesheet" href="css/portfolio.css" type="text/css">
     <link rel="shortcut icon" href="logo/logo.ico">
-    <script src="//use.typekit.net/qau2hnf.js"></script>
+    
+    <link rel="stylesheet" href="css/python.css" type="text/css">
+
+    <link rel="stylesheet" href="js/highlight.pack.js">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+	<script src="//use.typekit.net/qau2hnf.js"></script>
 	<script>try{Typekit.load();}catch(e){}</script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/portfolio.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -28,19 +38,39 @@
             <h1 class="topText"><span class="green">></span>Portfolio<span class="green">.</span></h1>
             <div class="portBoxCol">
         	    <div class="bodyCol">
-    	        	<div class="portBox"><img class="portSVG" src="svg/python.svg"><div class="focus"></div></div>
-	                <div class="portBox"><img class="portSVG" src="svg/VB.svg"></div>
-                	<div class="portBox"><img class="portSVG" src="svg/cpp.svg"></div>
-            	    <div class="portBox"><img class="portSVG" src="svg/isaac.svg"></div>
+    	        	<a href="javascript:;">
+                        <div class="portBox" id="PythonButton">
+                            <img class="portSVG" src="svg/python.svg">
+                        </div>
+                    </a>
+	                <a href="javascript:;">
+                        <div class="portBox" id="VBButton">
+                            <img class="portSVG" src="svg/VB.svg">
+                        </div>
+                    </a>
+                	<a href="javascript:;">
+                        <div class="portBox" id="CppButton">
+                            <img class="portSVG" src="svg/cpp.svg">
+                        </div>
+                    </a>
+            	    <a href="javascript:;">
+                        <div class="portBox" id="IsaacButton">
+                            <img class="portSVG" src="svg/isaac.svg">
+                        </div>
+                    </a>
 	            </div>
             </div>
             <div class="previewBoxCol">
-    	        <div class="infoCol">
-	                <div class="previewBox">
-	                </div>
-	            </div>
+                <div class="previewBox" id="previewBox">
+                    <div class="selectionCol">
+                        <div class="selectionBox" id="selectionBox"></div>
+                    </div>
+                    <div id="contentBox"></div>
+                </div>
             </div>
         </div>
+    <div id="WIP"><img id="hardhatSVG" src="svg/WIP.svg">Work in Progress</div>
     </div>
+    
 </body>
 </html>
