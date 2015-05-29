@@ -28,36 +28,6 @@ $(function () {
         
         //add animation
         $('#previewBox').addClass("fallin");
-	});
-    $('#scheduleButton').click(function () {
-        $('#contentBox').html("");
-        $('#contentBox').load('python_schedule.html');
-    });
-    $('#thumbnailButton').click(function () {
-        $('#contentBox').empty();
-        $('#contentBox').load('isaac.html');
-    });
-    $('#twitterButton').click(function () {
-        $('#contentBox').html("");
-        $('#contentBox').load('isaac.html');
-    });
-    $('#hashButton').click(function () {
-        $('#contentBox').html("");
-        $('#contentBox').load('isaac.html');
-    });
-    $('#pullingButton').click(function () {
-        $('#contentBox').html("");
-        $('#contentBox').load('isaac.html');
-    });
-    $('#dogeButton').click(function () {
-        $('#contentBox').html("");
-        $('#contentBox').load('isaac.html');
-    });
-    $('#budgetButton').click(function () {
-        $('#contentBox').html("");
-        $('#contentBox').load('isaac.html');
-    });
-    
 //VB BUTTON
 	$(vb).click(function () {
 		$("#PythonButton > div").remove();

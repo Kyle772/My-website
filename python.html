@@ -22,7 +22,7 @@
 	<div class="header">
     	<div class="headerLogo"><img src="logo/Logo.svg"></div>
     	<a href="index.html"><div class="button" id="Home">Blog</div></a>
-        <a href="portfolio.html"><div class="button" id="Portfolio"><div class="focus"></div>Portfolio</div></a>
+        <a href="python.html"><div class="button" id="Portfolio"><div class="focus"></div>Portfolio</div></a>
         <a href="contact.html"><div class="button" id="Contact Me">Contact Me</div></a>
         <div class="headerContact">
 			<div class="headerPhoto"></div>
@@ -63,16 +63,56 @@
             <div class="previewBoxCol">
                 <div class="previewBox" id="previewBox">
                     <div class="selectionCol">
-                        <div class="selectionBox" id="selectionBox"></div>
+                        <div class="selectionBox" id="selectionBox">
+                            <div class="top selectionHeader">Python Projects:</div>
+                                <a href="#scheduleScraper">
+                                    <div class="selectionButton" id="scheduleButton">
+                                        Schedule Scraper
+                                    </div>
+                                </a>
+                                <a href="#thumbnail">
+                                    <div class="selectionButton" id="thumbnailButton">
+                                        Batch Thumbnail Creator
+                                    </div>
+                                </a>
+                                <a href="#twitterScraper">
+                                    <div class="selectionButton" id="twitterButton">
+                                        Twitter Scraper
+                                    </div>
+                                </a>
+                                <a href="#hashBomb">
+                                    <div class="selectionButton" id="hashButton">
+                                        Hash Bomber
+                                    </div>
+                                </a>
+                                <a href="#photoPulling">
+                                    <div class="selectionButton" id="pullingButton">
+                                        Photo Pulling
+                                    </div>
+                                </a>
+                                <a href="#doge">
+                                    <div class="selectionButton" id="dogeButton">
+                                        Doge Suite
+                                    </div>
+                                </a>
+                                <a href="#budget">
+                                    <div class="selectionButton" id="budgetButton">
+                                        Budgetting
+                                    </div>
+                                </a>
+                            
+                        </div>
                     </div>
-                    <div id="contentBox">
-                     <div class="preview">
-        <h1 class="idAnchor" id="scheduleScraper">Schedule Scraper</h1>
-        <p>A small python program that pulls the HTML code from the online class catalog for Fullerton College. Using Beautiful Soup 4 and Gspread I made an algorithm to pull data from each table element and organize it based on column number and data types. Once the Data is pulled it then sends all the data to a Google Spreadsheet for cloud access at any time. 
-<br><br>
-The purpose behind this program was to make choosing classes easier for me, it filters through classes that are Restricted or waitlisted and only showed those that were either open or closed (so I could see which classes recently closed)</p>
-        <br>
-        <div class="code"><pre><code>#--Algorithm snippet for sifting through values--#
+
+                <div id="contentBox">
+                <div class="preview">
+                    <h1 class="idAnchor" id="scheduleScraper">Schedule Scraper</h1>
+                    <p>A small python program that pulls the HTML code from the online class catalog for Fullerton College. Using Beautiful Soup 4 and Gspread I made an algorithm to pull data from each table element and organize it based on column number and data types. Once the Data is pulled it then sends all the data to a Google Spreadsheet for cloud access at any time. 
+                    <br><br>
+            The purpose behind this program was to make choosing classes easier for me, it filters through classes that are Restricted or waitlisted and only showed those that were either open or closed (so I could see which classes recently closed)</p>
+                    <br>
+                    <div class="code">
+                        <pre><code>#--Algorithm snippet for sifting through values--#
 for tr in soup.find_all('tr'):
     if stop == True:
         break
@@ -150,11 +190,13 @@ for tr in soup.find_all('tr'):
             #--Increment--#
             tdcount += 1
     tdcount = 1
-        </pre></code></div>
-        <iframe src="https://docs.google.com/file/d/0B4w7kTswal6QNTh5RWdxTVc5bmM/preview" width="49%" height="400px"></iframe>
-    <a href="#top" class="top">back to top</a>
+            </pre></code>
+        </div>
+                    <iframe src="https://docs.google.com/file/d/0B4w7kTswal6QNTh5RWdxTVc5bmM/preview" width="49%" height="400px"></iframe>
+                    <a href="#top" class="top">back to top</a>
                          
-                         </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
