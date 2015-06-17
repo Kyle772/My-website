@@ -1,17 +1,18 @@
 * {
 	margin: 0px;
 	padding: 0px;
-}
-html {
-    height: 100%;
+    transition: all .5s cubic-bezier(.56,0,.48,1);
 }
 a {
     text-decoration: none;
     color: black;
 }
+.dropdown, #menuButton, .dropdownButton {
+    display: none;
+}
 /*ie9*/
 .ie9 img[src*=".svg"] {
-  width: 100%; 
+  width: 60%; 
 }
 /*ie10+*/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
@@ -26,7 +27,6 @@ a {
 	border-bottom: 1px solid #BBBBBB;
 	background-color: #F9F9F9;
 	box-shadow: 0px -5px 15px 1px black;
-	min-width: 980px;
 	overflow: hidden;
 	z-index: 100;
 }
@@ -49,7 +49,7 @@ a {
 .headerLogo {
 	display: inline-block;
 	float: left;
-	margin: 11px;
+	margin: 9px;
 	width: 60px;
 	height: auto;
 	padding-left: 75px;
@@ -184,7 +184,6 @@ body {
 	background-color: #F0F0F0;
 	margin-top: 75px;
 	padding: 0px;
-	min-width: 980px;
 }
 .mainCol {
 	position: relative;
@@ -198,10 +197,6 @@ body {
 	border: 1px solid #BBBBBB;
 	border-top: 0px;
 	min-height: 750px;
-}
-.topText {
-	padding: 40px;
-	padding-bottom: 0px;
 }
 /*PortBox Area*/
 .portBoxCol {
@@ -226,6 +221,7 @@ body {
 	border: 1px #BBBBBB;
 	margin-bottom: 30px;
 	overflow: hidden;
+    background-color: white;
 }
 .portBoxAfter {
 	position: absolute;
@@ -249,11 +245,10 @@ body {
 	}
 }
 .portSVG {
-	display: inline;
-	width: auto;
+	display: block;
+	width: 60%;
 	height: auto;
 	margin: 20%;
-	-webkit-transform-style: preserve-3d;
 }
 .portSVG:hover{
 	-webkit-animation: angle .1s cubic-bezier(.17,.67,.83,.67) forwards;
@@ -270,12 +265,14 @@ body {
 .selectionCol {
     position: absolute;
     top: 0px;
+    left: 0px;
     display: inline-block;
     min-height: 100%;
     width: 19%;
     background-color: #F8F8F8;
     border-right: 1px solid #D2D2D2;
     z-index: 10;
+    perspective: 10000px;
 }
 .selectionBox {
     position: relative;
@@ -296,15 +293,27 @@ div.selectionButton, div.selectionHeader {
     height: 75px;
     visibily: hidden;
 }
+.topButton {
+    margin: 20px;
+    float: right;
+    text-decoration: underline;
+}
+.topButton::after {
+    clear: both;
+}
+.topText {
+    padding: 40px;
+    margin-bottom: 0px; 
+}
 div.selectionButton:hover {
     -webkit-animation: move-right .1s cubic-bezier(.17,.67,.83,.67) forwards;
 }
 @-webkit-keyframes move-right {
     0% {
-        -webkit-transform: translateX(0em);
+        background-color: #F8F8F8;
     }
     100% {
-        -webkit-transform: translateX(1em);
+        background-color: #F2F2F2;
     }
 }
 div.selectionHeader {
@@ -327,10 +336,9 @@ div.selectionHeader {
 }
 .previewBoxCol {
 	position: relative;
-	right: 0px;
+	left: 11%;
 	top: 0px;
 	display: inline-block;
-	margin-left: calc(10% + 10px);
 	width: 88%;
 	z-index: 10;
     height: 100%;
@@ -340,10 +348,8 @@ div.selectionHeader {
 	right: 30px;
 	width: 100%;
 	min-height: 700px;
-    height: 1000px;
 	box-shadow: 1px 0px 5px #AAAAAA;
 	border: 1px #BBBBBB;
-	margin-top: 00px;
 }
 @-webkit-keyframes height-pulldown {
 	0% {
@@ -354,6 +360,16 @@ div.selectionHeader {
 		opacity: 1;
 		-webkit-transform: translateY(0);
 	}
+}
+.nextPortion {
+    padding-top: 100px;
+}
+.pdfPreview {
+    width: 49%;
+    height: 400px;
+}
+.mainHeader {
+    visibilit
 }
 /*Work in progress*/
 #WIP {
@@ -374,6 +390,11 @@ h1 {
     font-size: 32px;
     font-weight: 400;
 }
+.mainHeader {
+    font-family: "clarendon-text-pro", serif;
+	font-size: 32px;
+    display: none;
+}
 .button {
 	font-family: "adelle-sans";
 }
@@ -386,7 +407,7 @@ p {
 	font-family: "adobe-text-pro", sans-serif;
 	text-indent: 50px;
 	font-size: 18px;
-	margin-left: 25px;
+	margin-left: 0px;
 	margin-bottom: 10px;
 }
 .green {

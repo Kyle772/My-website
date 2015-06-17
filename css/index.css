@@ -1,6 +1,10 @@
 * {
 	margin: 0px;
 	padding: 0px;
+    transition: all .5s;
+}
+.dropdown, #menuButton, .dropdownButton {
+    display: none;
 }
 .header {
 	position: fixed;
@@ -9,9 +13,8 @@
 	border-bottom: 1px solid #BBBBBB;
 	background-color: #F9F9F9;
 	box-shadow: 0px -5px 15px 1px black;
-	min-width: 980px;
-	overflow: hidden;
 	z-index: 100;
+    overflow: hidden;
 }
 .siteButtonDiv {
 	display: inline-block;
@@ -30,21 +33,22 @@
 	background-color: #F2F2F2;
 }
 .headerLogo {
+    position: relative;
+    float: left;
 	display: inline-block;
-	float: left;
-	margin: 11px;
+	margin: 9px;
 	width: 60px;
 	height: auto;
 	padding-left: 75px;
 	padding-right: 25px;
-	/*25px margin on right*/
 }
 .button {
 	position: relative;
+    float: left;
 	display: inline-block;
-	float: left;
 	height: 48px;
 	width: auto;
+    top: 0px;
 	background-color: #F9F9F9;
 	margin-left: 25px;
 	text-align: center;
@@ -67,6 +71,7 @@
 	background-color: #42B426;
 }
 .headerContact {
+    position: relative;
 	display: inline-block;
 	float: right;
 	width: auto;
@@ -108,7 +113,6 @@
 	margin-left: -60px;
 	box-shadow: 0px 2px 5px 0px #333333;
 }
-
 /*MAIN BODY UNDER HEADER*/
 .main {
 	display: inline-block;
@@ -117,10 +121,9 @@
 	background-color: #F0F0F0;
 	margin-top: 75px;
 	padding: 0px;
-	min-width: 980px;
 }
 .mainCol {
-	display: relative;
+	display: absolute;
 	width: 85%;
 	height: 100%;
 	min-height: 1000px;
@@ -130,6 +133,8 @@
 	background-color: white;
 	border: 1px solid #BBBBBB;
 	border-top: 0px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .bodyCol {
 	display: inline-block;
@@ -139,31 +144,24 @@
 	padding-top: 40px;
 	padding-bottom: 40px;
 }
-.clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-}
 .infoCol {
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
-	float: right;
+    width: 29%;
 	box-sizing: border-box;
-	width: 29%;
 	height: auto;
 	border-left: 1px solid #BBBBBB;
 	padding-top: 40px;
+    margin-top: 0px;
 }
 .blogPostCon {
 	width: auto;
 	min-height: 100px;
-	margin-left: 10px;
-	margin-right: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
+	margin-left: 25px;
+	margin-right: 25px;
+	padding-left: 25px;
+	padding-right: 25px;
 	padding-bottom: 40px;
 	margin-bottom: 70px;
 	background-color: white;
@@ -197,7 +195,9 @@
 	text-indent: 0em;
 	margin: 0px;
 }
-
+#about {
+    margin-top: 180px;
+}
 /*FONTS AND HEADERS*/
 h1 {
     font-family: "clarendon-text-pro", serif;
@@ -217,7 +217,7 @@ p {
 	font-family: "adobe-text-pro", sans-serif;
 	text-indent: 50px;
 	font-size: 18px;
-	margin-left: 25px;
+	margin-left: 0px;
 	margin-bottom: 10px;
 }
 .green {

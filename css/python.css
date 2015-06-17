@@ -13,8 +13,11 @@
     display: inline-block;
     height: 400px;
     width: 49%;
-    overflow: scroll;
-    background: url('alt.png')
+    overflow: auto;
+    border: solid grey;
+    border-width: .1em .1em .1em .5em;
+    box-sizing: border-box;
+    padding-left: 10px;
 }
 /*FONTS AND HEADERS*/
 h1 {
@@ -22,6 +25,7 @@ h1 {
     margin-bottom: 25px;
     font-size: 32px;
     font-weight: 400;
+    
 }
 li {
     font-family: "adobe-text-pro", sans-serif;

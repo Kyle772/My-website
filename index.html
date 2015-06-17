@@ -7,26 +7,38 @@
     <script src="//use.typekit.net/qau2hnf.js"></script>
 	<script>try{Typekit.load();}catch(e){}</script>
 
-	<link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 1099px)' href='css/medium/index.css' />
+    <link rel='stylesheet' media='screen and (max-width: 700px)' href='css/small/index.css' />
     <link rel="shortcut icon" href="logo/logo.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/index.js"></script>
 </head>
-
 <body>
 	<div class="header">
-    <!--
-    	<div class="siteButtonDiv">
-    		<div class="siteButton">Design</div>
-    	    <div class="siteButton">Software</div>
-	        <div class="siteButton">Photography</div>
-        </div>
-    -->
-    	<div class="headerLogo"><img src="logo/Logo.svg"></div>
-    	<a href="index.html"><div class="button" id="Home">
-        	<div class="focus"></div>
-            Blog
-        </div></a>
-        <a href="python.html"><div class="button" id="Portfolio">Portfolio</div></a>
-        <a href="contact.html"><div class="button" id="Contact Me">Contact Me</div></a>
+        <a href="http://KyleDiggs.com/">
+            <div class="headerLogo">
+                <img src="logo/Logo.svg">
+            </div>
+        </a>
+    	<a href="index.html">
+            <div class="button" id="Home">
+                <div class="focus"></div>
+                Blog
+            </div>
+        </a>
+        <a href="python.html">
+            <div class="button" id="Portfolio">
+                Portfolio
+            </div>
+        </a>
+        <a href="contact.html">
+            <div class="button" id="ContactMe">
+                Contact Me
+            </div>
+        </a>
         <div class="headerContact">
 			<div class="headerPhoto"></div>
 	        <div class="headerInfo">
@@ -35,6 +47,20 @@
                 Anaheim, CA
 	        </div>
         </div>
+        <div class="menu" id="menuButton">
+            <img class="menuSvg" src="http://www.KyleDiggs.com/assets/menu.svg">
+        </div>
+    </div>
+    <div class="dropdown" id="dropdownDiv">
+        <a href="http://software.KyleDiggs.com/index.html">
+            <div class="dropdownButton">Blog</div>
+        </a>
+        <a href="http://software.KyleDiggs.com/python.html">
+            <div class="dropdownButton">Portfolio</div>
+        </a>
+        <a href="http://software.KyleDiggs.com/contact.html">
+            <div class="dropdownButton">Contact Me</div>
+        </a>
     </div>
     <div class="main">
     	<div class="mainCol">
@@ -49,22 +75,30 @@
 					<br>
 					<p class="signoff">Until next time,<br>
                     Kyle Diggs</p>
+                    
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Software blog home -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:320px;height:100px"
+                         data-ad-client="ca-pub-9712079756569102"
+                         data-ad-slot="5644759307"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
                 
             </div>
             <div class="infoCol">
             	<div class="infoColCon">
 					<h1>
-                        <span class="green">></span>About Me<span class="green"?>.</span>
+                        <span class="green">></span>About Me<span class="green">.</span>
                     </h1>
 					<div class="headerPhoto" id="aboutPhoto"></div>
-                    	<p class="infobox" style="margin-top: 180px;">My name is Kyle Diggs I am 19 years old and I have 3 passions: Programming, Design, and Photography. I am always learning and trying to better myself in every aspect of my life. I am a very hard worker with a strong creative background and a VERY strong thirst for knowledge.</p><p class="infobox" style="text-align: center;"> <br><br>
+                    <p class="infobox" id="about">My name is Kyle Diggs I am 19 years old and I have 3 passions: Programming, Design, and Photography. I am always learning and trying to better myself in every aspect of my life. I am a very hard worker with a strong creative background and a VERY strong thirst for knowledge.</p>
+                    <p class="infobox" style="text-align: center;" id="motto"> <br><br>
 Don't let life get in the way of your goals everything will work out in the end!<br><br>
-Like what I'm doing? Let me know! Software@KyleDiggs.com<br>
-<br>
-<br></span>
-</p>
-                
+Like what I'm doing? Let me know! Software@KyleDiggs.com<br><br><br>
+                        </p>
                 </div>
             </div>
         </div>

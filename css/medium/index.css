@@ -1,0 +1,59 @@
+.infoCol {
+    position: static;
+    display: block;
+    vertical-align: baseline;
+    float: none;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    border-left: none;
+    padding-top: 0px;
+    margin-top: -50px;
+}
+.infoColCon {
+	width: 100%;
+    height: auto;
+    max-height: 300px;
+	min-height: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: white;
+    box-shadow: 0px 30px 10px -30px #BBBBBB;
+}
+.infoColCon > h1 {
+    margin-left: 50px;
+}
+#motto {
+    display: none;
+}
+.infobox {
+	text-indent: 0em;
+	margin: 0px;
+}
+#about {
+    display: inline-block;
+    position: relative;
+    top: -100px;
+    margin-top: -00px;
+    margin-left: 200px;
+    padding-right: 75px;
+}
+#aboutPhoto {
+	position: static;
+	display: inline-block;
+    background-size: 100px, 100px;
+	width: 100px;
+	height: 100px;
+	margin-left: 75px;
+    margin-right: auto;
+	box-shadow: 0px 2px 5px 0px #333333;
+}
+.bodyCol {
+    margin-top: 0px;
+    width: 100%;
+}
+.signoff {
+	text-indent: 0em;
+	text-align: justify;
+	margin-left: 60%;
+}

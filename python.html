@@ -4,10 +4,20 @@
 	<meta charset="utf-8">
 	<title>Kyle Diggs Portfolio</title>
     <link rel="stylesheet" href="css/portfolio.css" type="text/css">
+    <link rel="stylesheet" href="css/python.css" type="text/css">
     <link rel="shortcut icon" href="logo/logo.ico">
     
-    <link rel="stylesheet" href="css/python.css" type="text/css">
+    <!--[if IE 10]>
+    <link rel="stylesheet" href="css/portfolioIE.css" type="text/css">
+    <![endif]-->
 
+    <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 1099px)' href='css/medium/portfolio.css' />
+    <link rel='stylesheet' media='screen and (max-width: 700px)' href='css/small/portfolio.css' />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="js/python.js">
     <link rel="stylesheet" href="js/highlight.pack.js">
     <script src="js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -16,14 +26,19 @@
 	<script>try{Typekit.load();}catch(e){}</script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="js/portfolio.js"></script>
+    <script src="js/portfolio.js"></script>
 </head>
 <body>
 	<div class="header">
-    	<div class="headerLogo"><img src="logo/Logo.svg"></div>
+    	<a href="http://KyleDiggs.com/">
+            <div class="headerLogo">
+                <img id="mainLogo" src="logo/Logo.svg">
+            </div>
+            <div class="mainHeader">Portfolio</div>
+        </a>
     	<a href="index.html"><div class="button" id="Home">Blog</div></a>
         <a href="python.html"><div class="button" id="Portfolio"><div class="focus"></div>Portfolio</div></a>
-        <a href="contact.html"><div class="button" id="Contact Me">Contact Me</div></a>
+        <a href="contact.html"><div class="button" id="ContactMe">Contact Me</div></a>
         <div class="headerContact">
 			<div class="headerPhoto"></div>
 	        <div class="headerInfo">
@@ -32,10 +47,24 @@
                 Anaheim, CA
 	        </div>
         </div>
+        <div class="menu" id="menuButton">
+            <img class="menuSvg" src="http://www.KyleDiggs.com/assets/menu.svg">
+        </div>
     </div>
+    <div class="dropdown" id="dropdownDiv">
+            <a href="http://software.KyleDiggs.com/index.html">
+                <div class="dropdownButton">Blog</div>
+            </a>
+            <a href="http://software.KyleDiggs.com/python.html">
+                <div class="dropdownButton">Portfolio</div>
+            </a>
+            <a href="http://software.KyleDiggs.com/contact.html">
+                <div class="dropdownButton">Contact Me</div>
+            </a>
+        </div>
     <div class="main">
     	<div class="mainCol">
-            <h1 class="topText"><span class="green">></span>Portfolio<span class="green">.</span></h1>
+            <h1 class="topText"><span class="green">></span>Python Portfolio<span class="green">.</span></h1>
             <div class="portBoxCol">
         	    <div class="bodyCol">
     	        	<a href="python.html">
@@ -103,105 +132,294 @@
                             
                         </div>
                     </div>
+                    <div id="contentBox">
+                        <div class="preview">
+                            <div id="scheduleScraper">
+                                <h1 class="idAnchor">Schedule Scraper</h1>
+                                <p>A small python program that pulls the HTML code from the online class catalog for Fullerton College. Using Beautiful Soup 4 and Gspread I made an algorithm to pull data from each table element and organize it based on column number and data types. Once the Data is pulled it then sends all the data to a Google Spreadsheet for cloud access at any time. 
+                                <br><br>
+                        The purpose behind this program was to make choosing classes easier for me, it filters through classes that are Restricted or waitlisted and only showed those that were either open or closed (so I could see which classes recently closed)</p>
+                                <br>
+                                <div class="code">
+                                    <pre><code><!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">urllib2</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">bs4</span> <span style="color: #008800; font-weight: bold">import</span> BeautifulSoup
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">gspread</span>
 
-                <div id="contentBox">
-                <div class="preview">
-                    <h1 class="idAnchor" id="scheduleScraper">Schedule Scraper</h1>
-                    <p>A small python program that pulls the HTML code from the online class catalog for Fullerton College. Using Beautiful Soup 4 and Gspread I made an algorithm to pull data from each table element and organize it based on column number and data types. Once the Data is pulled it then sends all the data to a Google Spreadsheet for cloud access at any time. 
-                    <br><br>
-            The purpose behind this program was to make choosing classes easier for me, it filters through classes that are Restricted or waitlisted and only showed those that were either open or closed (so I could see which classes recently closed)</p>
-                    <br>
-                    <div class="code">
-                        <pre><code>#--Algorithm snippet for sifting through values--#
-for tr in soup.find_all('tr'):
-    if stop == True:
-        break
-    if len(tr) < 15:
-        continue
+gc <span style="color: #333333">=</span> gspread<span style="color: #333333">.</span>login(<span style="background-color: #fff0f0">&#39;&lt;redacted&gt;&#39;</span>, <span style="background-color: #fff0f0">&#39;&lt;redacted&gt;&#39;</span>)
+sh <span style="color: #333333">=</span> gc<span style="color: #333333">.</span>open(<span style="background-color: #fff0f0">&quot;Class schedule&quot;</span>)
+worksheet <span style="color: #333333">=</span> sh<span style="color: #333333">.</span>worksheet(<span style="background-color: #fff0f0">&quot;Slave&quot;</span>)
+
+<span style="color: #888888">#C:/Users/Kyle/Google%20Drive/Python/Schedule%20scraper/</span>
+url<span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Span101F.html&quot;</span>
+soup <span style="color: #333333">=</span> BeautifulSoup(<span style="color: #007020">open</span>(url))
+
+stop <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+
+StatusList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;Status&quot;</span>]
+CrnList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;CRN&quot;</span>]
+CreditList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;Cred&quot;</span>]
+TimeList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;Meeting Time&quot;</span>]
+RoomList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;Room&quot;</span>]
+ProfList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;Professor&quot;</span>]
+tdcount <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+DataCheckPoint <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+
+MondayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;M&quot;</span>]
+TuesdayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;T&quot;</span>]
+WednesdayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;W&quot;</span>]
+ThursdayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;R&quot;</span>]
+FridayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;F&quot;</span>]
+SaturdayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;S&quot;</span>]
+SundayList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;S&quot;</span>]
+
+ListOfLists <span style="color: #333333">=</span> []
+ValidList <span style="color: #333333">=</span> [<span style="background-color: #fff0f0">&quot;OPEN&quot;</span>]
+<span style="color: #888888">#, &quot;CLOSED&quot;, &quot;RESTRICTED&quot;</span>
+
+<span style="color: #008800; font-weight: bold">for</span> tr <span style="color: #000000; font-weight: bold">in</span> soup<span style="color: #333333">.</span>find_all(<span style="background-color: #fff0f0">&#39;tr&#39;</span>):
+    <span style="color: #008800; font-weight: bold">if</span> stop <span style="color: #333333">==</span> <span style="color: #007020">True</span>:
+        <span style="color: #008800; font-weight: bold">break</span>
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">len</span>(tr) <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">15</span>:
+        <span style="color: #008800; font-weight: bold">continue</span>
+    <span style="color: #008800; font-weight: bold">for</span> td <span style="color: #000000; font-weight: bold">in</span> tr<span style="color: #333333">.</span>find_all(<span style="background-color: #fff0f0">&#39;td&#39;</span>):
+        <span style="color: #008800; font-weight: bold">if</span> td<span style="color: #333333">.</span>text <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;OPEN&quot;</span> <span style="color: #000000; font-weight: bold">or</span> td<span style="color: #333333">.</span>text <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;CLOSED&quot;</span>:
+            DataCheckPoint <span style="color: #333333">=</span> <span style="color: #007020">True</span>
+
+        <span style="color: #008800; font-weight: bold">if</span> DataCheckPoint <span style="color: #333333">==</span> <span style="color: #007020">True</span>:
+            <span style="color: #008800; font-weight: bold">if</span> td<span style="color: #333333">.</span>text <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;End of report&quot;</span>:
+                stop <span style="color: #333333">=</span> <span style="color: #007020">True</span>
+                <span style="color: #008800; font-weight: bold">break</span>
+            <span style="color: #008800; font-weight: bold">if</span> td<span style="color: #333333">.</span>text <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;Status&quot;</span>:
+                <span style="color: #888888">#stop = True</span>
+                <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>
+                <span style="color: #008800; font-weight: bold">break</span>
+            <span style="color: #888888">#if len(str(td.text)) &lt; 4:</span>
+            <span style="color: #888888">#    continue</span>
+            <span style="color: #888888">#print td.text.replace(&quot; &quot;, &quot;&quot;)</span>
+
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span>:
+                <span style="color: #008800; font-weight: bold">if</span> <span style="color: #000000; font-weight: bold">not</span> (td<span style="color: #333333">.</span>text <span style="color: #000000; font-weight: bold">in</span> ValidList):
+                    <span style="color: #008800; font-weight: bold">continue</span>
+                StatusList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">2</span>:
+                CrnList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">3</span>:
+                CreditList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+                
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">4</span>:
+                <span style="color: #008800; font-weight: bold">if</span> <span style="background-color: #fff0f0">&quot;Onlinecourse&quot;</span> <span style="color: #000000; font-weight: bold">in</span> td<span style="color: #333333">.</span>text:
+                    <span style="color: #008800; font-weight: bold">continue</span>
+                <span style="color: #008800; font-weight: bold">if</span> td<span style="color: #333333">.</span>text <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;&quot;</span>:
+                    MondayList<span style="color: #333333">.</span>append(<span style="background-color: #fff0f0">&quot; &quot;</span>)
+                <span style="color: #008800; font-weight: bold">else</span>:
+                    MondayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">5</span>:
+                TuesdayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">6</span>:
+                WednesdayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">7</span>:
+                ThursdayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">8</span>:
+                FridayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">9</span>:
+                SaturdayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">10</span>:
+                SundayList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+                
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">11</span>:
+                TimeList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">12</span>:
+                text <span style="color: #333333">=</span> td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>)
+                text <span style="color: #333333">=</span> text[text<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&#39;FC&#39;</span>)::]
+                RoomList<span style="color: #333333">.</span>append(text)
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">13</span>:
+                <span style="color: #008800; font-weight: bold">pass</span>
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">14</span>:
+                <span style="color: #008800; font-weight: bold">pass</span>
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">15</span>:
+                <span style="color: #008800; font-weight: bold">pass</span>
+            <span style="color: #008800; font-weight: bold">if</span> tdcount <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">16</span>:
+                ProfList<span style="color: #333333">.</span>append(td<span style="color: #333333">.</span>text<span style="color: #333333">.</span>replace(<span style="background-color: #fff0f0">&quot; &quot;</span>, <span style="background-color: #fff0f0">&quot;&quot;</span>))
+            
+            tdcount <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+    tdcount <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+
+
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #007020">len</span>(StatusList)):
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;</span><span style="background-color: #eeeeee">%-7s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-6s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-10s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-1s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-1s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-1s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-1s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-1s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-1s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-2s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-18s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%-8s</span><span style="background-color: #fff0f0"> </span><span style="background-color: #eeeeee">%s</span><span style="background-color: #fff0f0">&quot;</span>) <span style="color: #333333">%</span> (
+                                             StatusList[i], CrnList[i], CreditList[i],
+                                             MondayList[i], TuesdayList[i],
+                                             WednesdayList[i], ThursdayList[i], FridayList[i],
+                                             SaturdayList[i], SundayList[i],
+                                             TimeList[i], RoomList[i], ProfList[i]
+                                             )
+    <span style="color: #007020">list</span> <span style="color: #333333">=</span> [StatusList[i], CrnList[i], CreditList[i], MondayList[i], TuesdayList[i],
+            WednesdayList[i], ThursdayList[i], FridayList[i], SaturdayList[i],
+            SundayList[i], TimeList[i], RoomList[i], ProfList[i]]
+
+    ListOfLists<span style="color: #333333">.</span>append(<span style="color: #007020">list</span>)
+
+count <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+<span style="color: #008800; font-weight: bold">for</span> SubList <span style="color: #000000; font-weight: bold">in</span> ListOfLists:
+    appended <span style="color: #333333">=</span> <span style="color: #007020">True</span>
+    <span style="color: #008800; font-weight: bold">while</span>(appended):
+        <span style="color: #008800; font-weight: bold">try</span>:
+            <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Attemping to append line </span><span style="background-color: #eeeeee">%s</span><span style="background-color: #fff0f0">&quot;</span>) <span style="color: #333333">%</span> (count)
+            worksheet<span style="color: #333333">.</span>append_row(SubList)
+            appended <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+            count <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+        <span style="color: #008800; font-weight: bold">except</span>:
+            <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;Exception, trying again&quot;</span>
+            gc <span style="color: #333333">=</span> gspread<span style="color: #333333">.</span>login(<span style="background-color: #fff0f0">&#39;&lt;redacted&gt;&#39;</span>, <span style="background-color: #fff0f0">&#39;&lt;redacted&gt;&#39;</span>)
+            sh <span style="color: #333333">=</span> gc<span style="color: #333333">.</span>open(<span style="background-color: #fff0f0">&quot;Class schedule&quot;</span>)
+            worksheet <span style="color: #333333">=</span> sh<span style="color: #333333">.</span>worksheet(<span style="background-color: #fff0f0">&quot;Slave&quot;</span>)
+
+<span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;End&quot;</span>
+</pre>
+
+            </code></pre>
+                                </div>
+                                <iframe src="https://docs.google.com/file/d/0B4w7kTswal6QNTh5RWdxTVc5bmM/preview" class="pdfPreview"></iframe>
+                                <a href="#top" class="topButton">back to top</a>
+                            <div id="thumbnail">
+                                <h1 class="nextPortion">Batch Thumbnail Creator</h1>
+                                <p>A program to solve my problem with always having to make thumbnails for websites, photos, and product samples. It takes all images from a folder and resizes them based on the values within a text document. Once resized it puts the newly created pictures in a separate folder.</p><br>
+                                
+                                <div class="code" style="width: 100%;">
+                                <pre><code><!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#Thumbnail.py:</span>
+<span style="color: #888888">#   Takes in images from folder /Images using OS walk</span>
+<span style="color: #888888">#   checks sizes from file size.txt</span>
+<span style="color: #888888">#   resizes images based on the following conditions:</span>
+<span style="color: #888888">#       Will set width and height to the value</span>
+<span style="color: #888888">#           If one value is set to auto then constrain to the other value</span>
+<span style="color: #888888">#           Else resize to both values and stretch</span>
+<span style="color: #888888">#   Export images to folder /Thumbnails as pngs</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">os</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">PIL</span> <span style="color: #008800; font-weight: bold">import</span> Image
+
+filePaths <span style="color: #333333">=</span> []
+fileNames <span style="color: #333333">=</span> []
+constrain <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+reqWidth <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+reqHeight <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+useWidth <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+useHeight <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">ScanDir</span>():
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Pulling file locations from directory: &quot;</span>)
+    <span style="color: #008800; font-weight: bold">for</span> root, dirs, files <span style="color: #000000; font-weight: bold">in</span> os<span style="color: #333333">.</span>walk(<span style="background-color: #fff0f0">&quot;.\Images&quot;</span>):
+        <span style="color: #008800; font-weight: bold">print</span>(root)
+        <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>)
+        <span style="color: #008800; font-weight: bold">for</span> name <span style="color: #000000; font-weight: bold">in</span> files:
+            <span style="color: #008800; font-weight: bold">if</span> <span style="color: #000000; font-weight: bold">not</span> <span style="background-color: #fff0f0">&quot;.db&quot;</span> <span style="color: #000000; font-weight: bold">in</span> name:
+                path <span style="color: #333333">=</span> os<span style="color: #333333">.</span>path<span style="color: #333333">.</span>join(root, name)  
+                filePaths<span style="color: #333333">.</span>append(path)
+                fileNames<span style="color: #333333">.</span>append(name)
+            <span style="color: #008800; font-weight: bold">else</span>:
+                <span style="color: #008800; font-weight: bold">continue</span>
+        <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Using the following files:&quot;</span>)
+        <span style="color: #008800; font-weight: bold">for</span> item <span style="color: #000000; font-weight: bold">in</span> filePaths:
+            <span style="color: #008800; font-weight: bold">print</span>(item)
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">ScanDim</span>():
+    count <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+    f <span style="color: #333333">=</span> <span style="color: #007020">open</span>(<span style="background-color: #fff0f0">&quot;size.txt&quot;</span>, <span style="background-color: #fff0f0">&#39;r&#39;</span>)
+    <span style="color: #008800; font-weight: bold">for</span> line <span style="color: #000000; font-weight: bold">in</span> f:
+        count <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+        <span style="color: #008800; font-weight: bold">if</span> count <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span>:
+            colInd <span style="color: #333333">=</span> line<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&quot;: &quot;</span>)
+            reqWidth <span style="color: #333333">=</span> line[colInd<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">2</span>::]
+        <span style="color: #008800; font-weight: bold">elif</span> count <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">2</span>:
+            colInd <span style="color: #333333">=</span> line<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&quot;: &quot;</span>)
+            reqHeight <span style="color: #333333">=</span> line[colInd<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">2</span>::]
+
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>)
+    reqWidth, reqHeight, useWidth, useHeight <span style="color: #333333">=</span> ConstrainCheck(reqWidth, reqHeight)
+    <span style="color: #008800; font-weight: bold">return</span> reqWidth, reqHeight, useWidth, useHeight
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">ConstrainCheck</span>(reqWidth, reqHeight):
+    <span style="color: #008800; font-weight: bold">if</span> reqWidth <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;auto&quot;</span> <span style="color: #000000; font-weight: bold">or</span> reqWidth <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;auto</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>:
+        constrain <span style="color: #333333">=</span> <span style="color: #007020">True</span>
+        useWidth <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+    <span style="color: #008800; font-weight: bold">else</span>:
+        reqWidth <span style="color: #333333">=</span> <span style="color: #007020">int</span>(reqWidth)
+        constrain <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+        useWidth <span style="color: #333333">=</span> <span style="color: #007020">True</span>
         
-    #--Look for all data entries and skip any that contain...----#
-    #--RESTRICTED or WAITLISTED-(Keeping Closed to stay updated)-#
-    #----OPEN:--Open for Enrollment------# 
-    #----CLOSED:--Closed for Enrollment--#
-    #----RESTRICTED:--Special Classes----#
-    #----Waitlisted:--Full/Open Waitlist-#
-    
-    for td in tr.find_all('td'):
-        if td.text == "OPEN" or td.text == "CLOSED":
-            DataCheckPoint = True
+    <span style="color: #008800; font-weight: bold">if</span> reqHeight <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;auto&quot;</span> <span style="color: #000000; font-weight: bold">or</span> reqHeight <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;auto</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>:
+        constrain <span style="color: #333333">=</span> <span style="color: #007020">True</span>
+        useHeight <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+    <span style="color: #008800; font-weight: bold">else</span>:
+        reqHeight <span style="color: #333333">=</span> <span style="color: #007020">int</span>(reqHeight)
+        constrain <span style="color: #333333">=</span> <span style="color: #007020">False</span>
+        useHeight <span style="color: #333333">=</span> <span style="color: #007020">True</span>
+        
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Set dimensions:&quot;</span>)
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;width: &quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(reqWidth) <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;, height: &quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(reqHeight) <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; | Constrain:&quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(constrain))
+    <span style="color: #008800; font-weight: bold">return</span> reqWidth, reqHeight, useWidth, useHeight
 
-        if DataCheckPoint == True:
-            #--Skipping initial intro rows--#
-            if td.text == "End of report":
-                stop = True
-                break
-            if td.text == "Status":
-                #stop = True
-                print "\n"
-                break
-            #--Skimming through valid rows--#
-            if tdcount == 1:
-                if not (td.text in ValidList):
-                    continue
-                StatusList.append(td.text.replace(" ", ""))
-            if tdcount == 2:
-                CrnList.append(td.text.replace(" ", ""))
-            if tdcount == 3:
-                CreditList.append(td.text.replace(" ", ""))
-            #--Days of the week--#
-            if tdcount == 4:
-                #--Skips online courses--#
-                if "Onlinecourse" in td.text:
-                    continue
-                if td.text == "":
-                    MondayList.append(" ")
-                else:
-                    MondayList.append(td.text.replace(" ", ""))
-            if tdcount == 5:
-                TuesdayList.append(td.text.replace(" ", ""))
-            if tdcount == 6:
-                WednesdayList.append(td.text.replace(" ", ""))
-            if tdcount == 7:
-                ThursdayList.append(td.text.replace(" ", ""))
-            if tdcount == 8:
-                FridayList.append(td.text.replace(" ", ""))
-            if tdcount == 9:
-                SaturdayList.append(td.text.replace(" ", ""))
-            if tdcount == 10:
-                SundayList.append(td.text.replace(" ", ""))
-            #--Time slots for classes--#
-            if tdcount == 11:
-                TimeList.append(td.text.replace(" ", ""))
-            #--Room Number--#
-            if tdcount == 12:
-                text = td.text.replace(" ", "")
-                text = text[text.find('FC')::]
-                RoomList.append(text)
-            #--Useless information to skip--#
-            if tdcount == 13:
-                pass
-            if tdcount == 14:
-                pass
-            if tdcount == 15:
-                pass
-            #--Prof name--#
-            if tdcount == 16:
-                ProfList.append(td.text.replace(" ", ""))
-            #--Increment--#
-            tdcount += 1
-    tdcount = 1
-            </pre></code>
-        </div>
-                    <iframe src="https://docs.google.com/file/d/0B4w7kTswal6QNTh5RWdxTVc5bmM/preview" width="49%" height="400px"></iframe>
-                    <a href="#top" class="top">back to top</a>
-                         
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">ResizePropCheck</span>(width, height, reqWidth, reqHeight, useWidth, useHeight):
+    <span style="color: #008800; font-weight: bold">if</span> useWidth <span style="color: #000000; font-weight: bold">and</span> useHeight:
+        <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;both&quot;</span>
+        size <span style="color: #333333">=</span> reqWidth, reqHeight
+        <span style="color: #008800; font-weight: bold">print</span> size
+        <span style="color: #008800; font-weight: bold">return</span> size
+    <span style="color: #008800; font-weight: bold">elif</span> useWidth <span style="color: #000000; font-weight: bold">and</span> <span style="color: #000000; font-weight: bold">not</span> useHeight:
+        <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;width only&quot;</span>
+        ratio <span style="color: #333333">=</span> <span style="color: #007020">float</span>(reqWidth)<span style="color: #333333">/</span><span style="color: #007020">float</span>(width)
+        newHeight <span style="color: #333333">=</span> ratio <span style="color: #333333">*</span> height
+        size <span style="color: #333333">=</span> reqWidth, newHeight
+        <span style="color: #008800; font-weight: bold">print</span> size
+        <span style="color: #008800; font-weight: bold">return</span> size
+    <span style="color: #008800; font-weight: bold">elif</span> <span style="color: #000000; font-weight: bold">not</span> useWidth <span style="color: #000000; font-weight: bold">and</span> useHeight:
+        <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;height only&quot;</span>
+        ratio <span style="color: #333333">=</span> <span style="color: #007020">float</span>(reqHeight)<span style="color: #333333">/</span><span style="color: #007020">float</span>(height)
+        newWidth <span style="color: #333333">=</span> ratio <span style="color: #333333">*</span> width
+        size <span style="color: #333333">=</span> newWidth, height
+        <span style="color: #008800; font-weight: bold">print</span> size
+        <span style="color: #008800; font-weight: bold">return</span> size
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;neither&quot;</span>
+    <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;useWidth &quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(useWidth)
+    <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&quot;useHeight &quot;</span> <span style="color: #333333">+</span> <span style="color: #007020">str</span>(useHeight)
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">Resize</span>(reqWidth, reqHeight, useWidth, useHeight):
+    outputLoc <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;./Thumbnails/&quot;</span>
+    count <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> path <span style="color: #000000; font-weight: bold">in</span> filePaths:
+        <span style="color: #008800; font-weight: bold">try</span>:
+            <span style="color: #008800; font-weight: bold">print</span> path
+            im <span style="color: #333333">=</span> Image<span style="color: #333333">.</span>open(path)
+            oriSize <span style="color: #333333">=</span> im<span style="color: #333333">.</span>size
+            size <span style="color: #333333">=</span> ResizePropCheck(oriSize[<span style="color: #0000DD; font-weight: bold">0</span>], oriSize[<span style="color: #0000DD; font-weight: bold">1</span>], reqWidth, reqHeight, useWidth, useHeight)
+            im<span style="color: #333333">.</span>thumbnail(size, Image<span style="color: #333333">.</span>ANTIALIAS)
+            im<span style="color: #333333">.</span>save(outputLoc <span style="color: #333333">+</span> fileNames[count])
+            count <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+        <span style="color: #008800; font-weight: bold">except</span>:
+            <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Exception raised on item:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span> <span style="color: #333333">+</span> path)
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">main</span>():
+    ScanDir()
+    reqWidth, reqHeight, useWidth, useHeight <span style="color: #333333">=</span> ScanDim()
+    Resize(reqWidth, reqHeight, useWidth, useHeight)
+
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;__main__&quot;</span>:
+    main()
+</pre>
+
+                                </code>
+                                </pre>
+                                </div>
+                                
+                                <a href="#top" class="topButton">back to top</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     <div id="WIP"><img id="hardhatSVG" src="svg/WIP.svg">Work in Progress</div>
-    </div>
 </body>
 </html>
